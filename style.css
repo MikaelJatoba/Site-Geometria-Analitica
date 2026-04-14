@@ -1,0 +1,63 @@
+body {
+    background-color: #1a1a2e;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+canvas {
+    background-color: #f4f4f9;
+    border: 3px solid #16213e;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.caixa-controles {
+    background-color: #0f3460;
+    padding: 20px;
+    border-radius: 15px;
+    width: 500px;
+    margin: 0 auto 20px auto;
+}
+
+.caixa-controles2 {
+    background-color: #0f3460;
+    padding: 20px;
+    border-radius: 15px;
+    width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+input {
+    width: 70px;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+button {
+    background-color: #e94560;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+button:hover {
+    background-color: #ff6b81;
+}
+
+#textoResultado {
+    font-size: 20px;
+    color: #f5e6ca;
+    font-weight: bold;
+}

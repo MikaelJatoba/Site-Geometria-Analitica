@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometria Analítica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1> Geometria Analítica</h1>
+
+    <div class="caixa-controles2">
+        <h2> O que é Geometria analítica? 🤔</h2>
+        <h3> A Geometria Analítica (GA) é a área da matemática que estabelece uma ponte entre a Álgebra e a Geometria. Basicamente, ela utiliza processos algébricos para estudar e resolver problemas geométricos.</h3>
+        
+    </div>
+
+    <h1> Principais conceitos</h1>
+    
+    <div class="caixa-controles2">
+        <h2> Ponto, retas e planos</h2>
+        <h3> Ponto: é um conceito primitivo e adimensional que representa uma posição específica no espaço</h3>
+        <h3> Reta: é um conjunto infinito de pontos alinhados em uma única direção, representados algebricamente por equações de primeiro grau  no plano cartesiano</h3>
+        <h3> Plano: é uma superfície bidimensional infinita no espaço 3D, definida por um ponto de ancoragem e um vetor normal perpendicular.</h3>
+    </div>
+
+    <div class="caixa-controles">
+        <h3>Ponto Médio </h3>
+        
+        <p>Ponto A: 
+            X: <input id="inputAx" type="number" value="2"> 
+            Y: <input id="inputAy" type="number" value="3">
+        </p>
+        <p>Ponto B: 
+            X: <input id="inputBx" type="number" value="8"> 
+            Y: <input id="inputBy" type="number" value="7">
+        </p>
+        
+        <!-- O BOTÃO QUE DISPARA A MÁGICA -->
+        <button id="botaoCalcular">Calcular Ponto Médio</button>
+        
+        <p id="textoResultado">Ponto Médio M = ( , )</p>
+    </div>
+
+    <!-- A TELA DE DESENHO (CANVAS) -->
+    <!-- width="500" height="500" significa 500 pixels de largura e altura -->
+    <canvas id="telaDesenho" width="500" height="500"></canvas>
+
+    <!-- Link para o arquivo de programação (JavaScript) -->
+    <!-- IMPORTANTE: Fica no final do body -->
+    <script src="script.js"></script>
+</body>
+</html>
