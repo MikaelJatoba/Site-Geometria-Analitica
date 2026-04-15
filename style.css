@@ -239,3 +239,7 @@ button:hover {
 .rodape p {
     margin: 5px 0;
 }
+
+#conteudoMediana .formula {
+    font-size: 1.15rem;
+}

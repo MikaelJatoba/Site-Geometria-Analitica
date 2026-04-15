@@ -51,7 +51,7 @@
             <div class="explicacao">
                 <h3>Distância entre Dois Pontos</h3>
                 <p>A distância entre dois pontos A(x₁, y₁) e B(x₂, y₂) é calculada pelo <strong>Teorema de Pitágoras</strong>:</p>
-                <div class="formula">d(A,B) = √[(x₂ - x₁)² + (y₂ - y₁)²]</div>
+                <div class="formula"> (A,B) = √[ (x<sub>2</sub> - x<sub>1</sub>)² + (y<sub>2</sub> - y<sub>1</sub>)² ] </div>
                 <p>Visualmente, é o comprimento da hipotenusa do triângulo retângulo formado pelas diferenças das coordenadas.</p>
             </div>
             
@@ -80,7 +80,7 @@
             <div class="explicacao">
                 <h3>Ponto Médio</h3>
                 <p>O ponto médio M de um segmento AB é o ponto que divide o segmento exatamente ao meio. Suas coordenadas são a <strong>média aritmética</strong> das coordenadas das extremidades:</p>
-                <div class="formula">M = ( (x₁ + x₂)/2 , (y₁ + y₂)/2 )</div>
+                <div class="formula"> M = ( (x<sub>1</sub> + x<sub>2</sub>) / 2 , (y<sub>1</sub> + y<sub>2</sub>) / 2 )</div>
                 <p>É como encontrar o "centro de massa" entre dois pontos com pesos iguais.</p>
             </div>
             
@@ -109,8 +109,16 @@
             <div class="explicacao">
                 <h3>Mediana de um Triângulo</h3>
                 <p>A mediana é o segmento que liga um <strong>vértice</strong> ao <strong>ponto médio do lado oposto</strong>. Todo triângulo tem 3 medianas.</p>
-                <div class="formula">1º) Ponto médio de BC: M = ((x_B+x_C)/2, (y_B+y_C)/2)<br>
-                2º) Comprimento da mediana: d(A, M)</div>
+                <div class="formula">
+    <div style="margin-bottom: 12px;">
+        <strong>1º)</strong> Ponto médio de BC: 
+        M = ( (x<sub>B</sub>+x<sub>C</sub>)/2 , (y<sub>B</sub>+y<sub>C</sub>)/2 )
+    </div>
+    <div>
+        <strong>2º)</strong> Comprimento da mediana: 
+        d(A,M) = √[ (x<sub>M</sub>-x<sub>A</sub>)² + (y<sub>M</sub>-y<sub>A</sub>)² ]
+    </div>
+</div>
                 <p>Aqui calculamos a mediana partindo do vértice A até o lado BC.</p>
             </div>
             
@@ -132,7 +140,10 @@
             <div class="explicacao">
                 <h3>Baricentro (Centro de Gravidade)</h3>
                 <p>O baricentro G é o ponto de encontro das <strong>três medianas</strong> de um triângulo. Ele é o "centro de massa" do triângulo.</p>
-                <div class="formula">G = ( (x_A + x_B + x_C)/3 , (y_A + y_B + y_C)/3 )</div>
+                <div class="formula">
+    G = ( (x<sub>A</sub> + x<sub>B</sub> + x<sub>C</sub>) / 3 , 
+          (y<sub>A</sub> + y<sub>B</sub> + y<sub>C</sub>) / 3 )
+</div>
                 <p>Curiosidade: O baricentro divide cada mediana na razão 2:1 (a parte do vértice é o dobro da parte do lado).</p>
             </div>
             
@@ -154,7 +165,18 @@
             <div class="explicacao">
                 <h3>Condição de Alinhamento de 3 Pontos</h3>
                 <p>Três pontos A, B e C estão alinhados (são colineares) se, e somente se, o determinante da matriz formada por suas coordenadas for <strong>ZERO</strong>:</p>
-                <div class="formula">| x_A  y_A  1 |<br>| x_B  y_B  1 | = 0<br>| x_C  y_C  1 |</div>
+                <div class="formula">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <span style="font-size: 2rem;">|</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 50px); gap: 8px; text-align: center;">
+            <span>x<sub>A</sub></span> <span>y<sub>A</sub></span> <span>1</span>
+            <span>x<sub>B</sub></span> <span>y<sub>B</sub></span> <span>1</span>
+            <span>x<sub>C</sub></span> <span>y<sub>C</sub></span> <span>1</span>
+        </div>
+        <span style="font-size: 2rem;">|</span>
+        <span style="margin-left: 15px; font-size: 1.5rem;">= 0</span>
+    </div>
+</div>
                 <p>Isso significa que a área do triângulo formado por eles é zero.</p>
             </div>
             
