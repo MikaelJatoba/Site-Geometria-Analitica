@@ -3,67 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geometria Analítica</title>
+    <title>Geometria Analítica - Aula Interativa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1> Geometria Analítica</h1>
+    <h1>Geometria Analítica</h1>
+    <p class="subtitulo">A ponte entre Álgebra e Geometria</p>
 
-    <div class="caixa-controles2">
-        <h2> O que é Geometria analítica? 🤔</h2>
-        <h3> A Geometria Analítica (GA) é a área da matemática que estabelece uma ponte entre a Álgebra e a Geometria. Basicamente, ela utiliza processos algébricos para estudar e resolver problemas geométricos.</h3>
-        
+    <!-- PARTE FIXA: CONCEITOS BÁSICOS (SÓ ISSO FICA FORA DAS ABAS) -->
+    <div class="conceitos-basicos">
+        <div class="card-conceito">
+            <h2> O que é Geometria Analítica?</h2>
+            <p>A Geometria Analítica (GA) é a área da matemática que estabelece uma ponte entre a <strong>Álgebra</strong> e a <strong>Geometria</strong>. Basicamente, ela utiliza equações e coordenadas para estudar formas geométricas.</p>
+        </div>
+
+        <div class="grid-conceitos">
+            <div class="card-conceito">
+                <h3>Ponto</h3>
+                <p>É um conceito primitivo e adimensional. Representado por um par ordenado <strong>(x, y)</strong> no plano cartesiano.</p>
+            </div>
+            <div class="card-conceito">
+                <h3>Reta</h3>
+                <p>Conjunto infinito de pontos alinhados. Representada por equações do 1º grau: <strong>y = mx + b</strong> ou <strong>ax + by + c = 0</strong>.</p>
+            </div>
+            <div class="card-conceito">
+                <h3>Plano</h3>
+                <p>Superfície bidimensional infinita. No espaço 3D, é definido por um ponto e um vetor normal.</p>
+            </div>
+        </div>
     </div>
 
-    <h1> Principais conceitos</h1>
-    
-    <div class="caixa-controles2">
-        <h2> Ponto, retas e planos</h2>
-        <h3> Ponto: é um conceito primitivo e adimensional que representa uma posição específica no espaço</h3>
-        <h3> Reta: é um conjunto infinito de pontos alinhados em uma única direção, representados algebricamente por equações de primeiro grau  no plano cartesiano</h3>
-        <h3> Plano: é uma superfície bidimensional infinita no espaço 3D, definida por um ponto de ancoragem e um vetor normal perpendicular.</h3>
+    <!-- MENU DE ABAS (AULAS) -->
+    <div class="menu-abas">
+        <button class="aba-ativa" id="abaDistancia">Distância</button>
+        <button id="abaPontoMedio">Ponto Médio</button>
+        <button id="abaMediana">Mediana</button>
+        <button id="abaBaricentro">Baricentro</button>
+        <button id="abaAlinhamento">Alinhamento</button>
     </div>
 
-    <h1>Ponto médio entre dois pontos </h1>
-    <div class="caixa-controles">
-        <h3>Ponto Médio </h3>
+    <!-- CONTAINER DAS ABAS (CADA UMA É UMA AULA COMPLETA) -->
+    <div class="container-abas">
         
-        <p>Ponto A: 
-            X: <input id="inputAx" type="number" value="2"> 
-            Y: <input id="inputAy" type="number" value="3">
-        </p>
-        <p>Ponto B: 
-            X: <input id="inputBx" type="number" value="8"> 
-            Y: <input id="inputBy" type="number" value="7">
-        </p>
-        
-        <button id="botaoCalcular">Calcular Ponto Médio</button>
-        
-        <p id="textoResultado">Ponto Médio M = (Xm, Ym) </p>
+        <!-- ABA 1: DISTÂNCIA -->
+        <div id="conteudoDistancia" class="conteudo-aba">
+            <div class="explicacao">
+                <h3>Distância entre Dois Pontos</h3>
+                <p>A distância entre dois pontos A(x₁, y₁) e B(x₂, y₂) é calculada pelo <strong>Teorema de Pitágoras</strong>:</p>
+                <div class="formula">d(A,B) = √[(x₂ - x₁)² + (y₂ - y₁)²]</div>
+                <p>Visualmente, é o comprimento da hipotenusa do triângulo retângulo formado pelas diferenças das coordenadas.</p>
+            </div>
+            
+            <div class="area-calculo">
+                <div class="inputs">
+                    <div class="ponto-input">
+                        <label>Ponto A:</label>
+                        X: <input id="distAx" type="number" value="1"> 
+                        Y: <input id="distAy" type="number" value="1">
+                    </div>
+                    <div class="ponto-input">
+                        <label>Ponto B:</label>
+                        X: <input id="distBx" type="number" value="4"> 
+                        Y: <input id="distBy" type="number" value="5">
+                    </div>
+                </div>
+                <button id="btnDistancia">Calcular Distância</button>
+                <p id="resultadoDistancia" class="resultado">Resultado aqui...</p>
+            </div>
+            
+            <canvas id="canvasDistancia" class="canvas-aba" width="500" height="500"></canvas>
+        </div>
+
+        <!-- ABA 2: PONTO MÉDIO -->
+        <div id="conteudoPontoMedio" class="conteudo-aba" style="display: none;">
+            <div class="explicacao">
+                <h3>Ponto Médio</h3>
+                <p>O ponto médio M de um segmento AB é o ponto que divide o segmento exatamente ao meio. Suas coordenadas são a <strong>média aritmética</strong> das coordenadas das extremidades:</p>
+                <div class="formula">M = ( (x₁ + x₂)/2 , (y₁ + y₂)/2 )</div>
+                <p>É como encontrar o "centro de massa" entre dois pontos com pesos iguais.</p>
+            </div>
+            
+            <div class="area-calculo">
+                <div class="inputs">
+                    <div class="ponto-input">
+                        <label>Ponto A:</label>
+                        X: <input id="medAx" type="number" value="-2"> 
+                        Y: <input id="medAy" type="number" value="3">
+                    </div>
+                    <div class="ponto-input">
+                        <label>Ponto B:</label>
+                        X: <input id="medBx" type="number" value="6"> 
+                        Y: <input id="medBy" type="number" value="7">
+                    </div>
+                </div>
+                <button id="btnPontoMedio">Calcular Ponto Médio</button>
+                <p id="resultadoPontoMedio" class="resultado">Resultado aqui...</p>
+            </div>
+            
+            <canvas id="canvasPontoMedio" class="canvas-aba" width="500" height="500"></canvas>
+        </div>
+
+        <!-- ABA 3: MEDIANA -->
+        <div id="conteudoMediana" class="conteudo-aba" style="display: none;">
+            <div class="explicacao">
+                <h3>Mediana de um Triângulo</h3>
+                <p>A mediana é o segmento que liga um <strong>vértice</strong> ao <strong>ponto médio do lado oposto</strong>. Todo triângulo tem 3 medianas.</p>
+                <div class="formula">1º) Ponto médio de BC: M = ((x_B+x_C)/2, (y_B+y_C)/2)<br>
+                2º) Comprimento da mediana: d(A, M)</div>
+                <p>Aqui calculamos a mediana partindo do vértice A até o lado BC.</p>
+            </div>
+            
+            <div class="area-calculo">
+                <div class="inputs">
+                    <div class="ponto-input"><label>A:</label> X: <input id="mednAx" type="number" value="0"> Y: <input id="mednAy" type="number" value="0"></div>
+                    <div class="ponto-input"><label>B:</label> X: <input id="mednBx" type="number" value="6"> Y: <input id="mednBy" type="number" value="0"></div>
+                    <div class="ponto-input"><label>C:</label> X: <input id="mednCx" type="number" value="3"> Y: <input id="mednCy" type="number" value="5"></div>
+                </div>
+                <button id="btnMediana">Calcular Mediana</button>
+                <p id="resultadoMediana" class="resultado">Resultado aqui...</p>
+            </div>
+            
+            <canvas id="canvasMediana" class="canvas-aba" width="500" height="500"></canvas>
+        </div>
+
+        <!-- ABA 4: BARICENTRO -->
+        <div id="conteudoBaricentro" class="conteudo-aba" style="display: none;">
+            <div class="explicacao">
+                <h3>Baricentro (Centro de Gravidade)</h3>
+                <p>O baricentro G é o ponto de encontro das <strong>três medianas</strong> de um triângulo. Ele é o "centro de massa" do triângulo.</p>
+                <div class="formula">G = ( (x_A + x_B + x_C)/3 , (y_A + y_B + y_C)/3 )</div>
+                <p>Curiosidade: O baricentro divide cada mediana na razão 2:1 (a parte do vértice é o dobro da parte do lado).</p>
+            </div>
+            
+            <div class="area-calculo">
+                <div class="inputs">
+                    <div class="ponto-input"><label>A:</label> X: <input id="barAx" type="number" value="0"> Y: <input id="barAy" type="number" value="0"></div>
+                    <div class="ponto-input"><label>B:</label> X: <input id="barBx" type="number" value="6"> Y: <input id="barBy" type="number" value="0"></div>
+                    <div class="ponto-input"><label>C:</label> X: <input id="barCx" type="number" value="3"> Y: <input id="barCy" type="number" value="6"></div>
+                </div>
+                <button id="btnBaricentro">Calcular Baricentro</button>
+                <p id="resultadoBaricentro" class="resultado">Resultado aqui...</p>
+            </div>
+            
+            <canvas id="canvasBaricentro" class="canvas-aba" width="500" height="500"></canvas>
+        </div>
+
+        <!-- ABA 5: ALINHAMENTO -->
+        <div id="conteudoAlinhamento" class="conteudo-aba" style="display: none;">
+            <div class="explicacao">
+                <h3>Condição de Alinhamento de 3 Pontos</h3>
+                <p>Três pontos A, B e C estão alinhados (são colineares) se, e somente se, o determinante da matriz formada por suas coordenadas for <strong>ZERO</strong>:</p>
+                <div class="formula">| x_A  y_A  1 |<br>| x_B  y_B  1 | = 0<br>| x_C  y_C  1 |</div>
+                <p>Isso significa que a área do triângulo formado por eles é zero.</p>
+            </div>
+            
+            <div class="area-calculo">
+                <div class="inputs">
+                    <div class="ponto-input"><label>A:</label> X: <input id="alnAx" type="number" value="1"> Y: <input id="alnAy" type="number" value="2"></div>
+                    <div class="ponto-input"><label>B:</label> X: <input id="alnBx" type="number" value="3"> Y: <input id="alnBy" type="number" value="4"></div>
+                    <div class="ponto-input"><label>C:</label> X: <input id="alnCx" type="number" value="5"> Y: <input id="alnCy" type="number" value="6"></div>
+                </div>
+                <button id="btnAlinhamento">Verificar Alinhamento</button>
+                <p id="resultadoAlinhamento" class="resultado">Resultado aqui...</p>
+            </div>
+            
+            <canvas id="canvasAlinhamento" class="canvas-aba" width="500" height="500"></canvas>
+        </div>
+
     </div>
 
-    <!-- A TELA DE DESENHO (CANVAS) -->
-    <!-- width="500" height="500" significa 500 pixels de largura e altura -->
-    <canvas id="telaDesenho" width="500" height="500"></canvas>
+    <footer class="rodape">
+        <p>Contato: mvaj1@aluno.ifal.edu.br</p>
+        <p>&copy; 2026 Mikael Jatobá. Todos os direitos reservados.</p>
+        <P>Contato: abs1@aluno.ifal.edu.br </P>
+        <P>&copy; 2026 Arthur Barbosa. Todos os direitos reservados.</P>
+    </footer>
 
-    <!-- Link para o arquivo de programação (JavaScript) -->
-    <!-- IMPORTANTE: Fica no final do body -->
     <script src="script.js"></script>
-
-    
-<footer class="bg-dark text-white text-center py-4 mt-auto">
-  <div class="container">
-    <p class="mb-1">Contato: mvaj1@aluno.ifal.edu.br
-    <p class="mb-0">&copy; 2026 Mikael Jatobá. Todos os direitos reservados.</p>
-  </div>
-</footer>
-
-<footer class="bg-dark text-white text-center py-4 mt-auto">
-  <div class="container">
-    <p class="mb-1">Contato: -------------
-    <p class="mb-0">&copy; 2026 NOME DO ARTHUR. Todos os direitos reservados.</p>
-  </div>
-</footer>
 </body>
 </html>

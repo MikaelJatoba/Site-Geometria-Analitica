@@ -1,63 +1,241 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: #1a1a2e;
+    background: linear-gradient(145deg, #10101a 0%, #1a1a2e 100%);
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     text-align: center;
     padding: 20px;
+    min-height: 100vh;
 }
 
-canvas {
-    background-color: #f4f4f9;
-    border: 3px solid #16213e;
-    border-radius: 10px;
-    margin-top: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, #a3c2ff, #e0c3fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.caixa-controles {
-    background-color: #0f3460;
-    padding: 20px;
-    border-radius: 15px;
-    width: 500px;
+.subtitulo {
+    color: #8892b0;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+/* CONCEITOS BÁSICOS (PARTE FIXA) */
+.conceitos-basicos {
+    max-width: 1000px;
     margin: 0 auto 20px auto;
 }
 
-.caixa-controles2 {
-    background-color: #0f3460;
-    padding: 20px;
-    border-radius: 15px;
-    width: 800px;
-    margin: 0 auto 20px auto;
+.card-conceito {
+    background: #1e1e2f;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid #2a2a45;
+    text-align: left;
 }
 
-input {
-    width: 70px;
-    padding: 8px;
-    margin: 5px;
-    border-radius: 5px;
+.card-conceito h2 {
+    color: #e94560;
+    margin-bottom: 15px;
+}
+
+.card-conceito h3 {
+    color: #ccd6f6;
+    margin-bottom: 10px;
+}
+
+.card-conceito p {
+    line-height: 1.6;
+    color: #a8b2d1;
+}
+
+.grid-conceitos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* MENU DE ABAS */
+.menu-abas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0 20px 0;
+    flex-wrap: wrap;
+}
+
+.menu-abas button {
+    background-color: #16213e;
+    color: #a0b0d0;
     border: none;
+    padding: 14px 24px;
+    font-size: 16px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.menu-abas button:hover {
+    background-color: #1a2a4a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.menu-abas .aba-ativa {
+    background-color: #e94560;
+    color: white;
+    border-bottom: 3px solid #ff8a9e;
+    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+}
+
+/* CONTAINER DAS ABAS */
+.container-abas {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.conteudo-aba {
+    background: #1e1e2f;
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid #2a2a45;
+}
+
+/* EXPLICAÇÃO TEÓRICA */
+.explicacao {
+    text-align: left;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2a2a45;
+}
+
+.explicacao h3 {
+    color: #e94560;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.explicacao p {
+    line-height: 1.7;
+    color: #ccd6f6;
+    margin-bottom: 15px;
+}
+
+.formula {
+    background: #0f0f1a;
+    padding: 20px;
+    border-radius: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #64ffda;
+    border-left: 5px solid #e94560;
+}
+
+/* ÁREA DE CÁLCULO */
+.area-calculo {
+    background: #161626;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.ponto-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #0f0f1a;
+    padding: 10px 20px;
+    border-radius: 12px;
+}
+
+.ponto-input label {
+    font-weight: bold;
+    color: #8892b0;
+    margin-right: 5px;
+}
+
+.ponto-input input {
+    width: 80px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #3a3a5c;
+    background: #1a1a2e;
+    color: white;
     text-align: center;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 button {
     background-color: #e94560;
     color: white;
     border: none;
-    padding: 12px 25px;
-    font-size: 18px;
-    border-radius: 8px;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    border-radius: 12px;
     cursor: pointer;
     font-weight: bold;
-    margin: 15px 0;
+    margin: 10px 0 20px 0;
+    transition: 0.3s;
+    border-bottom: 4px solid #b32e48;
 }
 
 button:hover {
     background-color: #ff6b81;
+    transform: translateY(-2px);
+    border-bottom-width: 6px;
 }
 
-#textoResultado {
-    font-size: 20px;
-    color: #f5e6ca;
+.resultado {
+    font-size: 1.5rem;
     font-weight: bold;
+    color: #f5e6ca;
+    background: #16213e;
+    padding: 18px;
+    border-radius: 12px;
+    border-left: 6px solid #e94560;
+}
+
+/* CANVAS */
+.canvas-aba {
+    background-color: #f8f9ff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border: 2px solid #2a2a45;
+    display: block;
+    margin: 20px auto 0 auto;
+}
+
+/* RODAPÉ */
+.rodape {
+    margin-top: 50px;
+    padding: 25px;
+    background-color: #16213e;
+    border-radius: 16px;
+    color: #a0b0d0;
+}
+
+.rodape p {
+    margin: 5px 0;
 }
