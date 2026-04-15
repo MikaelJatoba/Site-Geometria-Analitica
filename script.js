@@ -162,7 +162,7 @@ function calcularDistancia() {
     let deltaY = by - ay;
     let distancia = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
     
-    document.getElementById('resultadoDistancia').innerHTML = `📐 Distância = ${distancia.toFixed(2)}`;
+    document.getElementById('resultadoDistancia').innerHTML = `Distância = ${distancia.toFixed(2)}`;
     
     d.desenharPlanoDeFundo();
     d.desenharLinha(ax, ay, bx, by);
@@ -181,7 +181,7 @@ function calcularPontoMedio() {
     let mx = (ax + bx) / 2;
     let my = (ay + by) / 2;
     
-    document.getElementById('resultadoPontoMedio').innerHTML = `🎯 Ponto Médio M = (${mx.toFixed(2)}, ${my.toFixed(2)})`;
+    document.getElementById('resultadoPontoMedio').innerHTML = `Ponto Médio M = (${mx.toFixed(2)}, ${my.toFixed(2)})`;
     
     d.desenharPlanoDeFundo();
     d.desenharLinha(ax, ay, bx, by);
@@ -207,7 +207,7 @@ function calcularMediana() {
     let deltaY = mBCy - ay;
     let comprimento = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
     
-    document.getElementById('resultadoMediana').innerHTML = `📊 Comprimento da Mediana = ${comprimento.toFixed(2)}`;
+    document.getElementById('resultadoMediana').innerHTML = `Comprimento da Mediana = ${comprimento.toFixed(2)}`;
     
     d.desenharPlanoDeFundo();
     d.desenharLinha(ax, ay, bx, by, "#a0a0c0");
@@ -233,7 +233,7 @@ function calcularBaricentro() {
     let gx = (ax + bx + cx) / 3;
     let gy = (ay + by + cy) / 3;
     
-    document.getElementById('resultadoBaricentro').innerHTML = `🔺 Baricentro G = (${gx.toFixed(2)}, ${gy.toFixed(2)})`;
+    document.getElementById('resultadoBaricentro').innerHTML = `Baricentro G = (${gx.toFixed(2)}, ${gy.toFixed(2)})`;
     
     d.desenharPlanoDeFundo();
     d.desenharLinha(ax, ay, bx, by, "#a0a0c0");
