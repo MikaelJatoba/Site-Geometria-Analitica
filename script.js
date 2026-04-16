@@ -1,5 +1,3 @@
-// ----- GERENCIADOR DE ABAS -----
-
 const abaDistancia = document.getElementById('abaDistancia');
 const abaPontoMedio = document.getElementById('abaPontoMedio');
 const abaMediana = document.getElementById('abaMediana');
@@ -28,7 +26,7 @@ function mostrarDistancia() {
     esconderTodasAbas();
     conteudoDist.style.display = 'block';
     abaDistancia.classList.add('aba-ativa');
-    setTimeout(calcularDistancia, 10); // Pequeno delay para o canvas renderizar
+    setTimeout(calcularDistancia, 10);
 }
 
 function mostrarPontoMedio() {
@@ -64,8 +62,6 @@ abaPontoMedio.addEventListener('click', mostrarPontoMedio);
 abaMediana.addEventListener('click', mostrarMediana);
 abaBaricentro.addEventListener('click', mostrarBaricentro);
 abaAlinhamento.addEventListener('click', mostrarAlinhamento);
-
-// ----- FÁBRICA DE CANVAS (Função que retorna um desenhista configurado) -----
 
 function criarDesenhista(canvasId) {
     const tela = document.getElementById(canvasId);
@@ -147,8 +143,6 @@ function criarDesenhista(canvasId) {
     
     return { desenharPlanoDeFundo, desenharPonto, desenharLinha };
 }
-
-// ----- FUNÇÕES DE CÁLCULO (Cada uma usa seu próprio canvas) -----
 
 function calcularDistancia() {
     const d = criarDesenhista('canvasDistancia');
@@ -272,13 +266,10 @@ function verificarAlinhamento() {
     }
 }
 
-// ----- CONECTAR BOTÕES -----
-
 document.getElementById('btnDistancia').addEventListener('click', calcularDistancia);
 document.getElementById('btnPontoMedio').addEventListener('click', calcularPontoMedio);
 document.getElementById('btnMediana').addEventListener('click', calcularMediana);
 document.getElementById('btnBaricentro').addEventListener('click', calcularBaricentro);
 document.getElementById('btnAlinhamento').addEventListener('click', verificarAlinhamento);
 
-// ----- INICIAR -----
 mostrarDistancia();

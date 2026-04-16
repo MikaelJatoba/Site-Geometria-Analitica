@@ -28,7 +28,6 @@ h1 {
     font-size: 1.2rem;
 }
 
-/* CONCEITOS BÁSICOS (PARTE FIXA) */
 .conceitos-basicos {
     max-width: 1000px;
     margin: 0 auto 20px auto;
@@ -64,7 +63,6 @@ h1 {
     gap: 20px;
 }
 
-/* MENU DE ABAS */
 .menu-abas {
     display: flex;
     justify-content: center;
@@ -99,7 +97,6 @@ h1 {
     box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
 }
 
-/* CONTAINER DAS ABAS */
 .container-abas {
     max-width: 900px;
     margin: 0 auto;
@@ -112,7 +109,6 @@ h1 {
     border: 1px solid #2a2a45;
 }
 
-/* EXPLICAÇÃO TEÓRICA */
 .explicacao {
     text-align: left;
     margin-bottom: 30px;
@@ -144,7 +140,6 @@ h1 {
     border-left: 5px solid #e94560;
 }
 
-/* ÁREA DE CÁLCULO */
 .area-calculo {
     background: #161626;
     padding: 25px;
@@ -217,7 +212,6 @@ button:hover {
     border-left: 6px solid #e94560;
 }
 
-/* CANVAS */
 .canvas-aba {
     background-color: #f8f9ff;
     border-radius: 16px;
@@ -227,7 +221,6 @@ button:hover {
     margin: 20px auto 0 auto;
 }
 
-/* RODAPÉ */
 .rodape {
     margin-top: 50px;
     padding: 25px;
@@ -242,4 +235,197 @@ button:hover {
 
 #conteudoMediana .formula {
     font-size: 1.15rem;
+}
+
+@media (max-width: 768px) {
+    
+    /* Títulos */
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitulo {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .grid-conceitos {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .card-conceito {
+        padding: 18px;
+    }
+    
+    .menu-abas {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+        margin: 20px 0;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .menu-abas button {
+        padding: 10px 16px;
+        font-size: 14px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .container-abas {
+        max-width: 100%;
+    }
+    
+    .conteudo-aba {
+        padding: 20px 15px;
+    }
+    
+    .explicacao h3 {
+        font-size: 1.5rem;
+    }
+    
+    .explicacao p {
+        font-size: 0.95rem;
+    }
+    
+    .formula {
+        font-size: 1rem;
+        padding: 15px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .area-calculo {
+        padding: 18px;
+    }
+    
+    .inputs {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .ponto-input {
+        justify-content: space-between;
+        padding: 12px 15px;
+    }
+    
+    .ponto-input label {
+        font-size: 1rem;
+    }
+    
+    .ponto-input input {
+        width: 70px;
+        font-size: 0.95rem;
+    }
+    
+    /* Botão de calcular */
+    button {
+        padding: 12px 20px;
+        font-size: 1rem;
+        width: 100%; /* Botão ocupa toda largura */
+    }
+    
+    /* Resultado */
+    .resultado {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+    
+    /* Canvas - Redimensionável */
+    .canvas-aba {
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        margin: 15px auto 0 auto;
+    }
+    
+    /* Rodapé */
+    .rodape {
+        margin-top: 30px;
+        padding: 20px 15px;
+    }
+    
+    .rodape p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .card-conceito {
+        padding: 15px;
+    }
+    
+    .explicacao h3 {
+        font-size: 1.3rem;
+    }
+    
+    .formula {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+    
+    .ponto-input {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .ponto-input label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .ponto-input input {
+        width: 60px;
+    }
+    
+    .resultado {
+        font-size: 1rem;
+    }
+    
+    /* Matriz do alinhamento - Ajuste especial */
+    #conteudoAlinhamento .formula {
+        font-size: 0.8rem;
+    }
+    
+    #conteudoAlinhamento .formula span[style*="font-size: 2rem"] {
+        font-size: 1.5rem !important;
+    }
+    
+    #conteudoAlinhamento .formula div[style*="grid-template-columns"] {
+        grid-template-columns: repeat(3, 35px) !important;
+        gap: 5px !important;
+    }
+}
+
+input:focus {
+    outline: 2px solid #e94560;
+    outline-offset: 2px;
+}
+
+.menu-abas::-webkit-scrollbar {
+    height: 4px;
+}
+
+.menu-abas::-webkit-scrollbar-track {
+    background: #16213e;
+    border-radius: 10px;
+}
+
+.menu-abas::-webkit-scrollbar-thumb {
+    background: #e94560;
+    border-radius: 10px;
 }
