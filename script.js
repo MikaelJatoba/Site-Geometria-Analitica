@@ -16,10 +16,7 @@ function esconderTodasAbas() {
     conteudoMediana.style.display = 'none';
     conteudoBari.style.display = 'none';
     conteudoAlin.style.display = 'none';
-    
-    document.querySelectorAll('.menu-abas button').forEach(btn => {
-        btn.classList.remove('aba-ativa');
-    });
+    document.querySelectorAll('.menu-abas button').forEach(btn => btn.classList.remove('aba-ativa'));
 }
 
 function mostrarAba(conteudo, botao, funcaoCalculo) {
@@ -64,15 +61,23 @@ function criarDesenhista(canvasId) {
         let minY = Math.min(...ys);
         let maxY = Math.max(...ys);
         
+        let margemX = Math.max((maxX - minX) * 0.25, 1);
+        let margemY = Math.max((maxY - minY) * 0.25, 1);
+        
+        minX = minX - margemX;
+        maxX = maxX + margemX;
+        minY = minY - margemY;
+        maxY = maxY + margemY;
+        
         let rangeX = maxX - minX;
         let rangeY = maxY - minY;
         
-        if (rangeX < 0.001) rangeX = 2;
-        if (rangeY < 0.001) rangeY = 2;
+        let escalaX = 400 / rangeX;
+        let escalaY = 400 / rangeY;
         
-        let maxRange = Math.max(rangeX, rangeY);
-        ESCALA = Math.min(200 / maxRange, 50);
-        ESCALA = Math.max(ESCALA, 5);
+        ESCALA = Math.min(escalaX, escalaY);
+        ESCALA = Math.min(ESCALA, 200);
+        ESCALA = Math.max(ESCALA, 0.5);
         
         OFFSET_X = (minX + maxX) / 2;
         OFFSET_Y = (minY + maxY) / 2;
@@ -128,15 +133,9 @@ function criarDesenhista(canvasId) {
         
         pincel.font = "12px Arial";
         pincel.fillStyle = "#333";
-        if (eixoX_Y >= 10 && eixoX_Y <= 490) {
-            pincel.fillText("x", 480, eixoX_Y - 5);
-        }
-        if (eixoY_X >= 10 && eixoY_X <= 490) {
-            pincel.fillText("y", eixoY_X + 10, 15);
-        }
-        if (eixoY_X >= 10 && eixoY_X <= 490 && eixoX_Y >= 10 && eixoX_Y <= 490) {
-            pincel.fillText("0", eixoY_X + 5, eixoX_Y - 5);
-        }
+        if (eixoX_Y >= 10 && eixoX_Y <= 490) pincel.fillText("x", 480, eixoX_Y - 5);
+        if (eixoY_X >= 10 && eixoY_X <= 490) pincel.fillText("y", eixoY_X + 10, 15);
+        if (eixoY_X >= 10 && eixoY_X <= 490 && eixoX_Y >= 10 && eixoX_Y <= 490) pincel.fillText("0", eixoY_X + 5, eixoX_Y - 5);
     }
     
     function desenharPonto(xMat, yMat, cor, nome) {
@@ -169,28 +168,17 @@ function criarDesenhista(canvasId) {
         pincel.setLineDash([]);
     }
     
-    return { 
-        desenharPlanoDeFundo, 
-        desenharPonto, 
-        desenharLinha, 
-        ajustarEscala 
-    };
+    return { desenharPlanoDeFundo, desenharPonto, desenharLinha, ajustarEscala };
 }
 
 function calcularDistancia() {
     const d = criarDesenhista('canvasDistancia');
-    
     let ax = parseFloat(document.getElementById('distAx').value) || 0;
     let ay = parseFloat(document.getElementById('distAy').value) || 0;
     let bx = parseFloat(document.getElementById('distBx').value) || 0;
     let by = parseFloat(document.getElementById('distBy').value) || 0;
-    
-    let deltaX = bx - ax;
-    let deltaY = by - ay;
-    let distancia = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
-    
+    let distancia = Math.sqrt((bx-ax)**2 + (by-ay)**2);
     document.getElementById('resultadoDistancia').innerHTML = `Distância = ${distancia.toFixed(2)}`;
-    
     let pontos = [{x: ax, y: ay}, {x: bx, y: by}];
     d.ajustarEscala(pontos);
     d.desenharPlanoDeFundo();
@@ -201,17 +189,13 @@ function calcularDistancia() {
 
 function calcularPontoMedio() {
     const d = criarDesenhista('canvasPontoMedio');
-    
     let ax = parseFloat(document.getElementById('medAx').value) || 0;
     let ay = parseFloat(document.getElementById('medAy').value) || 0;
     let bx = parseFloat(document.getElementById('medBx').value) || 0;
     let by = parseFloat(document.getElementById('medBy').value) || 0;
-    
     let mx = (ax + bx) / 2;
     let my = (ay + by) / 2;
-    
     document.getElementById('resultadoPontoMedio').innerHTML = `Ponto Médio M = (${mx.toFixed(2)}, ${my.toFixed(2)})`;
-    
     let pontos = [{x: ax, y: ay}, {x: bx, y: by}, {x: mx, y: my}];
     d.ajustarEscala(pontos);
     d.desenharPlanoDeFundo();
@@ -223,23 +207,16 @@ function calcularPontoMedio() {
 
 function calcularMediana() {
     const d = criarDesenhista('canvasMediana');
-    
     let ax = parseFloat(document.getElementById('mednAx').value) || 0;
     let ay = parseFloat(document.getElementById('mednAy').value) || 0;
     let bx = parseFloat(document.getElementById('mednBx').value) || 0;
     let by = parseFloat(document.getElementById('mednBy').value) || 0;
     let cx = parseFloat(document.getElementById('mednCx').value) || 0;
     let cy = parseFloat(document.getElementById('mednCy').value) || 0;
-    
     let mBCx = (bx + cx) / 2;
     let mBCy = (by + cy) / 2;
-    
-    let deltaX = mBCx - ax;
-    let deltaY = mBCy - ay;
-    let comprimento = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
-    
+    let comprimento = Math.sqrt((mBCx-ax)**2 + (mBCy-ay)**2);
     document.getElementById('resultadoMediana').innerHTML = `Comprimento da Mediana = ${comprimento.toFixed(2)}`;
-    
     let pontos = [{x: ax, y: ay}, {x: bx, y: by}, {x: cx, y: cy}, {x: mBCx, y: mBCy}];
     d.ajustarEscala(pontos);
     d.desenharPlanoDeFundo();
@@ -255,19 +232,15 @@ function calcularMediana() {
 
 function calcularBaricentro() {
     const d = criarDesenhista('canvasBaricentro');
-    
     let ax = parseFloat(document.getElementById('barAx').value) || 0;
     let ay = parseFloat(document.getElementById('barAy').value) || 0;
     let bx = parseFloat(document.getElementById('barBx').value) || 0;
     let by = parseFloat(document.getElementById('barBy').value) || 0;
     let cx = parseFloat(document.getElementById('barCx').value) || 0;
     let cy = parseFloat(document.getElementById('barCy').value) || 0;
-    
     let gx = (ax + bx + cx) / 3;
     let gy = (ay + by + cy) / 3;
-    
     document.getElementById('resultadoBaricentro').innerHTML = `Baricentro G = (${gx.toFixed(2)}, ${gy.toFixed(2)})`;
-    
     let pontos = [{x: ax, y: ay}, {x: bx, y: by}, {x: cx, y: cy}, {x: gx, y: gy}];
     d.ajustarEscala(pontos);
     d.desenharPlanoDeFundo();
@@ -282,42 +255,27 @@ function calcularBaricentro() {
 
 function verificarAlinhamento() {
     const d = criarDesenhista('canvasAlinhamento');
-    
     let ax = parseFloat(document.getElementById('alnAx').value) || 0;
     let ay = parseFloat(document.getElementById('alnAy').value) || 0;
     let bx = parseFloat(document.getElementById('alnBx').value) || 0;
     let by = parseFloat(document.getElementById('alnBy').value) || 0;
     let cx = parseFloat(document.getElementById('alnCx').value) || 0;
     let cy = parseFloat(document.getElementById('alnCy').value) || 0;
-    
-    let det = (ax*by*1 + ay*1*cx + 1*bx*cy) - (1*by*cx + ax*1*cy + ay*bx*1);
+    let det = (ax*by + ay*cx + bx*cy) - (by*cx + ax*cy + ay*bx);
     let alinhado = Math.abs(det) < 0.001;
-    
     let mensagem = alinhado ? "✅ SIM! Os pontos estão ALINHADOS." : "❌ NÃO! Os pontos NÃO estão alinhados.";
-    
     document.getElementById('resultadoAlinhamento').innerHTML = `${mensagem} (Determinante = ${det.toFixed(2)})`;
-    
     let pontos = [{x: ax, y: ay}, {x: bx, y: by}, {x: cx, y: cy}];
     d.ajustarEscala(pontos);
     d.desenharPlanoDeFundo();
     d.desenharPonto(ax, ay, "#3498db", "A");
     d.desenharPonto(bx, by, "#2ecc71", "B");
     d.desenharPonto(cx, cy, "#f39c12", "C");
-    
     if (alinhado) {
         let todosX = [ax, bx, cx].sort((a, b) => a - b);
         let todosY = [ay, by, cy].sort((a, b) => a - b);
-        
-        let p1 = pontos.find(p => p.x === todosX[0] && p.y === todosY[0]) || 
-                 pontos.find(p => p.x === todosX[0]) || 
-                 pontos.find(p => p.y === todosY[0]) || 
-                 pontos[0];
-                 
-        let p2 = pontos.find(p => p.x === todosX[2] && p.y === todosY[2]) || 
-                 pontos.find(p => p.x === todosX[2]) || 
-                 pontos.find(p => p.y === todosY[2]) || 
-                 pontos[2];
-        
+        let p1 = pontos.find(p => p.x === todosX[0] && p.y === todosY[0]) || pontos.find(p => p.x === todosX[0]) || pontos[0];
+        let p2 = pontos.find(p => p.x === todosX[2] && p.y === todosY[2]) || pontos.find(p => p.x === todosX[2]) || pontos[2];
         d.desenharLinha(p1.x, p1.y, p2.x, p2.y, "#e74c3c");
     }
 }
